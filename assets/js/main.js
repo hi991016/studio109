@@ -71,19 +71,21 @@ document.addEventListener("click", (evt) => {
 
 // ===== scroll header =====
 const header = document.querySelector("[data-header]");
-let lastScroll = window.pageYOffset;
+let lastScrollTop = 0;
 
-const handleScrollHeader = () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > lastScroll && currentScroll > 100) {
+const scrollHeaderDownUp = () => {
+  let st = window.scrollY;
+  if (Math.abs(lastScrollTop - st) <= 10) return;
+
+  if (st > lastScrollTop && lastScrollTop > 0) {
     header.classList.add("--hidden");
-  } else if (currentScroll < lastScroll) {
+  } else {
     header.classList.remove("--hidden");
   }
-  lastScroll = currentScroll;
+  lastScrollTop = st;
 };
 eventsTrigger.forEach((evt) => {
-  window.addEventListener(evt, handleScrollHeader);
+  window.addEventListener(evt, scrollHeaderDownUp);
 });
 
 // ===== menu =====
