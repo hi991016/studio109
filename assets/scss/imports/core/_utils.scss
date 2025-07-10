@@ -1,0 +1,23 @@
+/* Utils
+------------------------------------------------------------*/
+.u-container {
+  position: relative;
+  z-index: 2;
+  background-color: $main-bg-cl;
+}
+
+/* only device */
+.sp-only,
+.is-hidden {
+  display: none !important;
+}
+
+@include maxW(1024px) {
+  .pc-only {
+    display: none !important;
+  }
+
+  .sp-only {
+    display: block !important;
+  }
+}
