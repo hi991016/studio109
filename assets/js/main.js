@@ -7,7 +7,6 @@ const eventsTrigger = ["pageshow ", "scroll"];
 // ===== init =====
 const init = () => {
   // # #
-  console.clear();
   document.body.classList.remove("fadeout");
   // # app height
   appHeight();
@@ -84,7 +83,7 @@ const scrollHeaderDownUp = () => {
   }
   lastScrollTop = st;
 };
-eventsTrigger.forEach((evt) => {
+"pageshow scroll".split(" ").forEach((evt) => {
   window.addEventListener(evt, scrollHeaderDownUp);
 });
 
@@ -150,7 +149,7 @@ const handleFvOverlay = () => {
     (1 - (elementHeight - window.scrollY) / elementHeight) * 0.8 + 0.3;
   fvOverlay.style.opacity = Math.min(Math.max(opacity, 0.3), 0.8);
 };
-eventsTrigger.forEach((evt) => {
+"pageshow scroll".split(" ").forEach((evt) => {
   window.addEventListener(evt, handleFvOverlay);
 });
 
@@ -164,9 +163,35 @@ const initFadeIn = () => {
     elem.classList.toggle("--show", distInView < 0);
   }
 };
-eventsTrigger.forEach((evt) => {
+"pageshow scroll".split(" ").forEach((evt) => {
   window.addEventListener(evt, initFadeIn);
 });
+
+// ===== services =====
+let servicesSwiper = null;
+const initSwiperServices = () => {
+  if (isMobile.matches) {
+    servicesSwiper?.destroy(true, true);
+    servicesSwiper = null;
+  } else {
+    servicesSwiper = new Swiper("[data-services-swiper]", {
+      slidesPerView: 3.68,
+      initialSlide: 1,
+      spaceBetween: 35,
+      centeredSlides: true,
+      loop: true,
+      speed: 1000,
+      allowTouchMove: false,
+      draggable: false,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
+};
+initSwiperServices();
+isMobile.addEventListener("change", initSwiperServices);
 
 // ### ===== DOMCONTENTLOADED ===== ###
 window.addEventListener("pageshow", init);
