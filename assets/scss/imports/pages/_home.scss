@@ -198,7 +198,7 @@
   // ===== services =====
   .services {
     &_container {
-      background-color: #393939;
+      background-color: $gray-cl;
       padding: 100px 0;
     }
 
@@ -356,6 +356,42 @@
 
       .swiper-button-prev {
         left: 75px;
+      }
+    }
+  }
+
+  // ===== access =====
+  .access {
+    &_container {
+      padding: 100px;
+    }
+
+    @include maxW {
+      &_container {
+        padding: 70px 35px;
+      }
+    }
+  }
+
+  // ===== news ====
+  .news {
+    &_container {
+      background-color: $gray-cl;
+      padding: 100px 0;
+    }
+
+    &_wrapper {
+      width: max(47.083vw, 678px);
+      margin: 0 auto;
+    }
+
+    @include maxW {
+      &_container {
+        padding: 70px 35px;
+      }
+
+      &_wrapper {
+        width: 100%;
       }
     }
   }
