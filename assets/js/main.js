@@ -1,7 +1,7 @@
 "use strict";
 
 // ===== globals =====
-const isMobile = window.matchMedia("(max-width: 1023px)");
+const isMobile = window.matchMedia("(max-width: 1024px)");
 const eventsTrigger = ["pageshow ", "scroll"];
 
 // ===== init =====
@@ -140,18 +140,32 @@ const initAccordions = () => {
 };
 
 // ===== fv =====
+const [fvOverlay, fvContent] = [
+  document.querySelector("[data-fv-overlay]"),
+  document.querySelector("[data-fv-content]"),
+];
 const handleFvOverlay = () => {
-  const [overlay, content] = [
-    document.querySelector("[data-fv-overlay]"),
-    document.querySelector("[data-fv-content]"),
-  ];
-  let cal = content.getBoundingClientRect().top + window.scrollY;
-  let value = window.scrollY / cal;
-  overlay.style.opacity = Math.min(Math.max(value, 0), 0.8);
+  const elementHeight = fvOverlay.offsetHeight;
+  let opacity =
+    (1 - (elementHeight - window.scrollY) / elementHeight) * 0.8 + 0.3;
+  fvOverlay.style.opacity = Math.min(Math.max(opacity, 0.3), 0.8);
 };
-
 eventsTrigger.forEach((evt) => {
   window.addEventListener(evt, handleFvOverlay);
+});
+
+// ===== scroll fade in/out =====
+const fadeInArray = document.querySelectorAll("[data-fadein]");
+const initFadeIn = () => {
+  for (let i = 0; i < fadeInArray.length; i++) {
+    let elem = fadeInArray[i];
+    let distInView =
+      elem.getBoundingClientRect().top - window.innerHeight + 100;
+    elem.classList.toggle("--show", distInView < 0);
+  }
+};
+eventsTrigger.forEach((evt) => {
+  window.addEventListener(evt, initFadeIn);
 });
 
 // ### ===== DOMCONTENTLOADED ===== ###

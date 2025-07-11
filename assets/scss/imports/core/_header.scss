@@ -51,7 +51,7 @@
       background-color: rgba($color: #fff, $alpha: 0.5);
     }
 
-    @include maxW(1023px) {
+    @include maxW {
       display: block;
     }
   }
@@ -64,6 +64,7 @@
     a {
       display: inline-block;
       position: relative;
+      font-family: var(--neue-fonts);
       font-size: 1.4rem;
       font-weight: 500;
       text-transform: uppercase;
@@ -178,6 +179,10 @@
     height: 100vh;
     z-index: 100;
     pointer-events: none;
+
+    @include maxW {
+      height: var(--menu-height);
+    }
   }
 
   &_overlay {
@@ -230,7 +235,6 @@
   &_bottom {
     padding: 0 10px;
     p {
-      font-family: var(--noto-fonts);
       font-size: 1.3rem;
       font-weight: 500;
     }
@@ -249,13 +253,13 @@
     gap: 30px;
 
     h3 {
+      font-family: var(--neue-fonts);
       font-size: 2.3rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     p {
       margin-top: 2px;
-      font-family: var(--noto-fonts);
       font-size: 1.2rem;
       font-weight: 500;
       color: $gray-text-cl;
@@ -323,7 +327,6 @@
 
         li {
           width: fit-content;
-          font-family: var(--noto-fonts);
           font-size: 1.5rem;
           font-weight: 500;
           line-height: 1.35;
@@ -337,7 +340,7 @@
       }
     }
 
-    @include maxW(1023px) {
+    @include maxW {
       margin-bottom: 20px;
 
       &_btn {
@@ -366,7 +369,6 @@
   &_megasub {
     margin-top: 40px;
     a {
-      font-family: var(--noto-fonts);
       font-size: 1.5rem;
       font-weight: 500;
       line-height: 1.34;

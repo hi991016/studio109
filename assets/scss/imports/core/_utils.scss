@@ -6,6 +6,16 @@
   background-color: $main-bg-cl;
 }
 
+/* fade content */
+[data-fadein] {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+
+  &.--show {
+    opacity: 1;
+  }
+}
+
 /* only device */
 .sp-only,
 .is-hidden {

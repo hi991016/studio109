@@ -9,6 +9,10 @@
       position: relative;
       width: 100%;
       height: 100vh;
+
+      @include maxW {
+        height: var(--app-height);
+      }
     }
 
     &_video {
@@ -25,7 +29,12 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: -100;
       }
     }
 
@@ -33,16 +42,122 @@
       position: fixed;
       top: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       background-color: #000;
       z-index: 1;
-      opacity: 0;
+      opacity: 0.3;
+    }
+
+    &_scrolldown {
+      position: absolute;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+
+      span {
+        display: block;
+        width: 1px;
+        height: 240px;
+        background-color: rgba($color: #fff, $alpha: 0.5);
+
+        &:before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          animation: scrolldown 2.2s infinite;
+          background-color: #fff;
+        }
+      }
+
+      @include maxW {
+        bottom: -80px;
+
+        span {
+          height: 160px;
+        }
+      }
+
+      @keyframes scrolldown {
+        0% {
+          transform: scale(1, 0);
+          transform-origin: 0 0;
+        }
+
+        50% {
+          transform: scale(1, 1);
+          transform-origin: 0 0;
+        }
+        51% {
+          transform: scale(1, 1);
+          transform-origin: 0 100%;
+        }
+        100% {
+          transform: scale(1, 0);
+          transform-origin: 0 100%;
+        }
+      }
     }
 
     &_content {
-      height: 100vh;
       position: relative;
+      width: 100%;
+      height: 100vh;
       z-index: 2;
+
+      &_wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+
+        h3 {
+          font-size: 3.4rem;
+          font-weight: 600;
+          line-height: 1.6;
+        }
+      }
+
+      &_desc {
+        margin-top: 50px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 1.95;
+        font-feature-settings: "palt" 1;
+      }
+
+      &_logo {
+        margin-top: 90px;
+
+        svg {
+          margin: 0 auto;
+        }
+      }
+
+      @include maxW {
+        &_wrapper {
+          h3 {
+            font-size: 1.8rem;
+            line-height: 1.45;
+          }
+        }
+
+        &_desc {
+          font-size: 1.35rem;
+        }
+
+        &_logo {
+          margin-top: 70px;
+
+          svg {
+            width: 200.58px;
+            height: auto;
+          }
+        }
+      }
     }
 
     &_heading {
@@ -51,22 +166,32 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 2;
+      width: 100%;
       text-align: center;
 
       h2 {
+        font-family: var(--neue-fonts);
         font-size: 5.2rem;
         font-weight: 400;
         line-height: 1.25;
-        letter-spacing: 2.55px;
       }
 
       p {
         margin-top: 50px;
-        font-family: var(--noto-fonts);
         font-size: 2rem;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 1.2;
-        font-feature-settings: "palt" 1;
+      }
+
+      @include maxW {
+        h2 {
+          font-size: 2.9rem;
+        }
+
+        p {
+          margin-top: 15px;
+          font-size: 1.3rem;
+        }
       }
     }
   }

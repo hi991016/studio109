@@ -1,6 +1,6 @@
 /* variables
 ------------------------------------------------------------*/
-$main-fonts: "neue-haas-grotesk-display", "Noto Sans", sans-serif;
+$main-fonts: "Noto Sans JP", "neue-haas-grotesk-display", sans-serif;
 
 //color common
 $main-bg-cl: #000;
@@ -13,5 +13,6 @@ $gray-cl: #393939;
 :root {
   --app-height: 100vh;
   --menu-height: 100vh;
-  --noto-fonts: "Noto Sans", sans-serif;
+  --noto-fonts: "Noto Sans JP", sans-serif;
+  --neue-fonts: "neue-haas-grotesk-display", sans-serif;
 }
