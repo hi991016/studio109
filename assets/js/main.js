@@ -154,17 +154,23 @@ const handleFvOverlay = () => {
 });
 
 // ===== scroll fade in/out =====
-const fadeInArray = document.querySelectorAll("[data-fadein]");
-const initFadeIn = () => {
-  for (let i = 0; i < fadeInArray.length; i++) {
-    let elem = fadeInArray[i];
-    let distInView =
+const initToggleShow = (selector) => {
+  const elements = document.querySelectorAll(selector);
+  for (let i = 0; i < elements.length; i++) {
+    const elem = elements[i];
+    const distInView =
       elem.getBoundingClientRect().top - window.innerHeight + 100;
-    elem.classList.toggle("--show", distInView < 0);
+    if (distInView < 0) {
+      elem.classList.add("--show");
+    }
   }
 };
+
 "pageshow scroll".split(" ").forEach((evt) => {
-  window.addEventListener(evt, initFadeIn);
+  window.addEventListener(evt, () => {
+    initToggleShow("[data-fadein]");
+    initToggleShow("[data-texttop]");
+  });
 });
 
 // ===== services =====

@@ -18,6 +18,18 @@
   }
 }
 
+[data-texttop] {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 1s;
+  overflow: hidden;
+
+  &.--show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* only device */
 .sp-only,
 .is-hidden {
