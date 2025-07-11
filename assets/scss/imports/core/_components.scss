@@ -1,6 +1,7 @@
 /* Components
 ------------------------------------------------------------*/
 
+// ===== heading =====
 .c-heading {
   display: flex;
   align-items: center;
@@ -33,6 +34,72 @@
     p {
       margin-top: 5px;
       font-size: 1.2rem;
+    }
+  }
+}
+
+// ===== news =====
+.c-news {
+  &_list {
+    margin-top: 70px;
+  }
+
+  &_items {
+    padding: 35px 0;
+    border-top: 1px solid rgba($color: #fff, $alpha: 0.5);
+
+    &:last-child {
+      border-bottom: 1px solid rgba($color: #fff, $alpha: 0.5);
+    }
+  }
+
+  &_info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    p.date {
+      font-size: 1.6rem;
+    }
+
+    a.category {
+      font-size: 1.4rem;
+      opacity: 0.6;
+    }
+  }
+
+  &_title {
+    margin-top: 16px;
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  @include maxW {
+    &_list {
+      margin-top: 17px;
+    }
+
+    &_items {
+      padding: 28px 0;
+
+      &:first-child {
+        border-top: none;
+      }
+    }
+
+    &_info {
+      a.category {
+        display: none;
+      }
+
+      p.date {
+        font-size: 1.4rem;
+      }
+    }
+
+    &_title {
+      margin-top: 10px;
+      font-size: 1.4rem;
     }
   }
 }

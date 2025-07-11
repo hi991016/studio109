@@ -540,6 +540,27 @@
       margin: 0 auto;
     }
 
+    &_more {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: var(--neue-fonts);
+      font-size: 1.8rem;
+      font-weight: 400;
+      width: fit-content;
+
+      svg {
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        svg {
+          transform: translateX(3px);
+        }
+      }
+    }
+
     @include maxW {
       &_container {
         padding: 70px 35px;
@@ -547,6 +568,17 @@
 
       &_wrapper {
         width: 100%;
+      }
+
+      &_more {
+        margin-top: 35px;
+        gap: 15px;
+        font-size: 1.6rem;
+
+        svg {
+          width: 30.53px;
+          height: auto;
+        }
       }
     }
   }
