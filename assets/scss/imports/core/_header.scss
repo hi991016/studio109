@@ -4,7 +4,7 @@
 .c-header {
   &_container {
     position: fixed;
-    top: 23px;
+    top: 0;
     z-index: 10;
     width: 100%;
     padding: 0 50px;
@@ -12,6 +12,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    height: 84px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 
     @include minW {
       transition: opacity 0.5s ease-in-out;
@@ -23,7 +25,7 @@
     }
 
     @include maxW {
-      top: 32px;
+      height: 92px;
       padding: 0 25px;
     }
   }

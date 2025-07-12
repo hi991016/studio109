@@ -88,8 +88,10 @@
     }
 
     &_info {
+      gap: 12px;
+
       a.category {
-        display: none;
+        font-size: 1.2rem;
       }
 
       p.date {
@@ -98,7 +100,7 @@
     }
 
     &_title {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 1.4rem;
     }
   }

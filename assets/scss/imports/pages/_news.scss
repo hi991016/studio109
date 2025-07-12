@@ -1,0 +1,143 @@
+/* -------------------------------------------------------------------------- */
+/*                                  news page                                 */
+/* -------------------------------------------------------------------------- */
+
+.newspage {
+  // ===== news =====
+  .news {
+    &_container {
+      background-color: $gray-cl;
+      padding: 185px 0 105px;
+    }
+
+    &_wrapper {
+      width: max(49.634vw, 678px);
+      margin: 0 auto;
+
+      .c-news_list {
+        margin-top: initial;
+      }
+
+      .c-news_items:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    &_category {
+      width: 100%;
+      position: relative;
+      margin-top: 70px;
+      margin-bottom: 35px;
+
+      &_swiper {
+        position: relative;
+        overflow: hidden;
+
+        a {
+          font-size: 1.4rem;
+          line-height: 1.45;
+          opacity: 0.6;
+
+          &.--active {
+            opacity: 1;
+          }
+        }
+
+        .swiper-slide {
+          width: fit-content;
+        }
+      }
+    }
+
+    &_btn {
+      margin-top: 80px;
+      width: 100%;
+      height: 51px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--neue-fonts);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 1.8px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      color: $white-cl;
+      transition: all 0.5s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0);
+        background: rgba(255, 255, 255, 0.34);
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    @include maxW {
+      &_container {
+        padding: 160px 35px 70px;
+      }
+
+      &_wrapper {
+        width: 100%;
+      }
+
+      &_category {
+        margin-top: 35px;
+        margin-bottom: 25px;
+
+        &_swiper {
+          margin: 0 -35px;
+          padding: 0 35px;
+
+          a {
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      &_btn {
+        margin-top: 60px;
+        font-size: 1.3rem;
+        letter-spacing: 0;
+      }
+    }
+  }
+
+  // ===== detail =====
+  .detail {
+    &_top {
+      margin-top: 70px;
+    }
+
+    &_items {
+      border-top: none !important;
+    }
+
+    &_title {
+      font-size: 1.8rem;
+    }
+
+    &_content {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 1.4rem;
+      line-height: 1.9;
+      text-align: justify;
+    }
+
+    @include maxW {
+      &_top {
+        margin-top: 35px;
+      }
+
+      &_title {
+        font-size: 1.6rem;
+      }
+
+      &_content {
+        padding: 25px 0;
+      }
+    }
+  }
+}

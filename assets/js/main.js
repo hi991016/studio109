@@ -139,11 +139,13 @@ const initAccordions = () => {
 };
 
 // ===== fv =====
-const [fvOverlay, fvContent] = [
-  document.querySelector("[data-fv-overlay]"),
-  document.querySelector("[data-fv-content]"),
-];
 const handleFvOverlay = () => {
+  const [fvOverlay, fvContent] = [
+    document.querySelector("[data-fv-overlay]"),
+    document.querySelector("[data-fv-content]"),
+  ];
+  if (!fvOverlay || !fvContent) return;
+
   const elementHeight = fvOverlay.offsetHeight;
   let opacity =
     (1 - (elementHeight - window.scrollY) / elementHeight) * 0.8 + 0.3;
@@ -198,6 +200,22 @@ const initSwiperServices = () => {
 };
 initSwiperServices();
 isMobile.addEventListener("change", initSwiperServices);
+
+// ===== news =====
+const categorySwiper = new Swiper("[data-category-swiper]", {
+  slidesPerView: "auto",
+  allowTouchMove: true,
+  draggable: true,
+  speed: 1000,
+  breakpoints: {
+    0: {
+      spaceBetween: 15,
+    },
+    1025: {
+      spaceBetween: 20,
+    },
+  },
+});
 
 // ### ===== DOMCONTENTLOADED ===== ###
 window.addEventListener("pageshow", init);
